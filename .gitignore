@@ -1,6 +1,6 @@
-/Library
-/Logs
-/obj
-/Package
-/ProjectSettings
+Library/
+Logs/
+obj/
+Temp/
+Package/
 *.vsconfig
