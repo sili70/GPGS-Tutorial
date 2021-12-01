@@ -112,6 +112,11 @@ namespace GooglePlayGames
             mProgressCallback.Invoke(mId, mPercentComplete, callback);
         }
 
+        public string GetImageURL()
+        {
+            return completed ? mUnlockedImageUrl : mRevealedImageUrl;
+        }
+
         /// <summary>
         /// Loads the local user's image from the url.  Loading urls
         /// is asynchronous so the return from this call is fast,

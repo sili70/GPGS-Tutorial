@@ -24,7 +24,9 @@
 
 public static class GPGSIds
 {
-        public const string achievement_google_signin = "CgkI-5f3-qEFEAIQAQ"; // <GPGSID>
+        public const string achievement_win_20_race = "CgkI-5f3-qEFEAIQBw"; // <GPGSID>
+        public const string achievement_won_a_race = "CgkI-5f3-qEFEAIQBg"; // <GPGSID>
+        public const string achievement_secret_reward = "CgkI-5f3-qEFEAIQCA"; // <GPGSID>
 
 }
 

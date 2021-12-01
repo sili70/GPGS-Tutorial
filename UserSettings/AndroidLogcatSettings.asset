@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "192.168.1.40:5555",
         "name": "com.blossomgames.GPGSTutorial",
-        "processId": 14420,
+        "processId": 17440,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -30,6 +30,78 @@
             "deviceId": "emulator-5554",
             "name": "com.blossomgames.GPGSTutorial",
             "processId": 22448,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 5021,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 5267,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 5768,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 6161,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 6723,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 6995,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 7289,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 7460,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 7649,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 7913,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 8304,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 8699,
             "exited": false
         },
         {
@@ -138,6 +210,42 @@
             "deviceId": "192.168.1.40:5555",
             "name": "com.blossomgames.GPGSTutorial",
             "processId": 14420,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.40:5555",
+            "name": "com.DefaultCompany.GPGSTutorial",
+            "processId": 14421,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.40:5555",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 14422,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.40:5555",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 14424,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.40:5555",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 17439,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.40:5555",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 17441,
+            "exited": false
+        },
+        {
+            "deviceId": "192.168.1.40:5555",
+            "name": "com.blossomgames.GPGSTutorial",
+            "processId": 17440,
             "exited": false
         }
     ],
