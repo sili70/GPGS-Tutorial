@@ -12,11 +12,20 @@ public class GPGSManager : MonoBehaviour
     public Text m_Message;
     public Button m_SignIn;
 
+    [SerializeField] private GameObject m_FriendsPrefab;
+    [SerializeField] private GameObject m_FriedPrefabToIntiateAt;
+    [SerializeField] private GameObject m_friendsScrollRect;
+
+
     [SerializeField] private GameObject m_AchievementPrefab;
     [SerializeField] private GameObject m_AchievementToInstantiateAt;
 
     [SerializeField] private Button m_ShowCustomAchievementButton;
     [SerializeField] private GameObject m_AchievementListScollView;
+
+    private FriendsListVisibilityStatus m_FriendsListVisibilityStatus = FriendsListVisibilityStatus.Unknown;
+
+
     private void Start()
     {
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
@@ -142,5 +151,116 @@ public class GPGSManager : MonoBehaviour
                 }
             }
         });
+    }
+
+    public void GetFriends()
+    {
+        PlayGamesPlatform.Instance.GetFriendsListVisibility( /* forceReload = */ true, friendListVisibilityStatus =>
+        {
+            m_FriendsListVisibilityStatus = friendListVisibilityStatus;
+        });
+
+        switch(m_FriendsListVisibilityStatus)
+        {
+            case FriendsListVisibilityStatus.ResolutionRequired:
+                PlayGamesPlatform.Instance.AskForLoadFriendsResolution((result) =>
+                {
+                    if (result == UIStatus.Valid)
+                    {
+                        //Agree
+                        m_Message.text = "Agree";
+                    } else
+                    {
+                        m_Message.text = "Not valid";
+                    }
+                });
+                break;
+
+            case FriendsListVisibilityStatus.Unknown:
+                m_Message.text = "Unknow, Try again";
+                break;
+            case FriendsListVisibilityStatus.Visible:
+
+                //Show and Hide Scroll Rect
+                m_friendsScrollRect.SetActive(!m_friendsScrollRect.activeSelf);
+
+                //Clear List
+                foreach(Transform child in m_FriedPrefabToIntiateAt.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                PlayGamesPlatform.Instance.LoadFriends(2, false, (result) => { 
+                
+                    foreach(IUserProfile friends in Social.localUser.friends)
+                    {
+
+                        PlayGamesUserProfile friendUserProfile = (PlayGamesUserProfile)friends;
+
+                        //TODO: We will display it in a List
+                        GameObject friendObject = Instantiate(m_FriendsPrefab, m_FriedPrefabToIntiateAt.transform, false);
+                        FriendListItem friendListItem = friendObject.GetComponent<FriendListItem>();
+                        //friendListItem.SetUp(friends.id, friends.userName, friends.image);
+                        friendListItem.SetUp(friendUserProfile.id, friendUserProfile.userName, friendUserProfile.AvatarURL);
+                    }
+
+                    if (Social.localUser.friends.Length == 0)
+                    {
+                        m_Message.text = "No friends found !. Please add some";
+                    }
+                
+                });
+                break;
+        }
+    }
+
+    public void GetMoreFriends()
+    {
+        PlayGamesPlatform.Instance.GetFriendsListVisibility( /* forceReload = */ true, friendListVisibilityStatus =>
+        {
+            m_FriendsListVisibilityStatus = friendListVisibilityStatus;
+        });
+
+        switch (m_FriendsListVisibilityStatus)
+        {
+            case FriendsListVisibilityStatus.ResolutionRequired:
+                PlayGamesPlatform.Instance.AskForLoadFriendsResolution((result) =>
+                {
+                    if (result == UIStatus.Valid)
+                    {
+                        //Agree
+                        m_Message.text = "Agree";
+                    }
+                    else
+                    {
+                        m_Message.text = "Not valid";
+                    }
+                });
+                break;
+
+            case FriendsListVisibilityStatus.Unknown:
+                m_Message.text = "Unknow, Try again";
+                break;
+            case FriendsListVisibilityStatus.Visible:
+
+                PlayGamesPlatform.Instance.LoadMoreFriends(2, (result) => {
+
+                    foreach (IUserProfile friends in Social.localUser.friends)
+                    {
+                        PlayGamesUserProfile friendUserProfile = (PlayGamesUserProfile)friends;
+
+                        GameObject friendObject = Instantiate(m_FriendsPrefab, m_FriedPrefabToIntiateAt.transform, false);
+                        FriendListItem friendListItem = friendObject.GetComponent<FriendListItem>();
+                        friendListItem.SetUp(friendUserProfile.id, friendUserProfile.userName, friendUserProfile.AvatarURL);
+                    }
+
+                    if (Social.localUser.friends.Length == 0)
+                    {
+                        m_Message.text = "No friends found !. Please add some";
+                    }
+
+                });
+                break;
+        }
     }
 }
